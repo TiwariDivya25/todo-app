@@ -2,7 +2,7 @@ export function TodoCard(props) {
     const { todo, handleDeleteTodo, todoIdx, handleUpdateTodo } = props
 
     return (
-        <div className="card todo-item">
+        <div className={"card todo-item" + (todo.complete ? " todo-complete" : "")}> {/* Added class for completed todos */}
             <p>{todo.input}</p>
             <div className="todo-buttons">
                 <button onClick={() => {

@@ -66,8 +66,14 @@ hr {
 
 .todo-complete {
   position: relative;
+  /* Add styling for completed tasks, e.g., strikethrough or reduced opacity */
+  opacity: 0.6; /* Example: make completed tasks slightly faded */
+  text-decoration: line-through; /* Example: add strikethrough */
 }
 
+/* The ::after overlay could be useful for a visual "strike-through" effect
+   that doesn't interfere with text, but for simple strikethrough, text-decoration is easier.
+   If you want the overlay:
 .todo-complete::after {
   position: absolute;
   content: '';
@@ -77,6 +83,7 @@ hr {
   background: var(--background-primary);
   opacity: 0.6;
 }
+*/
 
 .todo-buttons {
   display: flex;
@@ -96,15 +103,11 @@ hr {
 }
 
 .todo-buttons button:first-of-type {
-  /* color: #8aff80;
-  background: rgba(138, 255, 128, .1); */
   color: var(--background-primary);
   background: var(--color-link);
 }
 
 .todo-buttons button:last-of-type {
-  /* color: #9580ff;
-  background: rgba(149, 128, 255, .1); */
   color: var(--color-link);
   background: var(--color-link-transparent);
 }

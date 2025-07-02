@@ -6,12 +6,12 @@ export function TodoInput(props) {
 
     return (
         <div className="input-container">
-            <input value={inputValue}  
+            <input value={inputValue}
             onChange={(e) => {setInputValue(e.target.value)}}
             placeholder="Add Task"/>
 
             <button onClick={() => {
-                if (!inputValue) { return }
+                if (!inputValue.trim()) { return } // Trim whitespace before checking for empty input
                 handleAddTodo(inputValue)
                 setInputValue("")
             }}>

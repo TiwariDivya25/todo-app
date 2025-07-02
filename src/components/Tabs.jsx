@@ -1,6 +1,6 @@
 export function Tabs(props) {
     const { todos, selectedTab, setSelectedTab } = props;
-    
+
     const tabs = ["all", "open", "completed"];
 
     return (
@@ -18,7 +18,7 @@ export function Tabs(props) {
                     <button onClick={() => {
                         setSelectedTab(tab)
                     }} key={tabIdx} className={"tab-button"
-                        + (tab === selectedTab ? "tab-selected" : "")
+                        + (tab === selectedTab ? " tab-selected" : "") // Added space for class concatenation
                     }>
                         <h4>{tab} <span>({numOfTasks})
                             </span>
@@ -27,7 +27,7 @@ export function Tabs(props) {
                 )
             })}
             <hr></hr>
-            
+
         </nav>
     );
 }
