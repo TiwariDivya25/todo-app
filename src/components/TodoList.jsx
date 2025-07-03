@@ -1,32 +1,30 @@
 import { TodoCard } from "./TodoCard";
 
 export function TodoList(props) {
-    const { todos, selectedTab, handleUpdateTodo, handleDeleteTodo } = props; // Destructure all needed props
+    const { todos, selectedTab } = props
 
-    const filterTodosList = selectedTab === "all" ?
-        todos:
-        selectedTab === "completed" ?
+
+    const filterTodosList = selectedTab === 'All' ?
+        todos :
+        selectedTab === 'Completed' ?
             todos.filter(val => val.complete) :
-            todos.filter(val => !val.complete); // Added semicolon
+            todos.filter(val => !val.complete)
 
     return (
         <>
-            {filterTodosList.map((todo) => {
-                // Find the original index of the todo item in the 'todos' array
-                // This is crucial because handleUpdateTodo and handleDeleteTodo
-                // operate on the original 'todos' array by index.
-                const originalTodoIdx = todos.findIndex(val => val.input === todo.input);
-
+            {filterTodosList.map((todo, todoIndex) => {
+                const tempTodoIndex = todos.findIndex(val => val.input == todo.input)
+                console.log(tempTodoIndex)
+                // finding an index like this has it's limitations and in later courses we learn a more sophisticated way of doing it (the limitation is that the code might misbehave if you have two todos with the exact same text :) See if you can figure out why!)
                 return (
                     <TodoCard
-                        key={todo.input} // Assuming todo.input is unique. If you have a unique ID, use that instead.
-                        todo={todo}
-                        todoIdx={originalTodoIdx} // Pass the original index
-                        handleUpdateTodo={handleUpdateTodo} // Pass down specific handlers
-                        handleDeleteTodo={handleDeleteTodo}
-                    />
+                        key={todoIndex}
+                        {...props}
+                        todoIndex={tempTodoIndex}
+                        todo={todo} />
                 )
             })}
+
         </>
-    );
+    )
 }
